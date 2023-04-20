@@ -46,7 +46,6 @@ void playOneRound(Player &p1, Player &p2)
             std::cout << p1.getName() << " won the round" << std::endl;
         }
     }
-    cin.get();
     system("clear");
 }
 

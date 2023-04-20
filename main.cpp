@@ -1,7 +1,8 @@
+#include <iostream>
+#include <list>
+#include "scoreboard.h"
 #include "player.h"
 #include "game.h"
-
-using namespace std;
 
 
 void testClasses(void)
@@ -9,12 +10,12 @@ void testClasses(void)
     Human human;
     Robot robot;
 
-    cout << "Human Debug functions: " << endl;
+    std::cout << "Human Debug functions: " << std::endl;
     human.setName();
     human.setNumber();
     human.debugPlayer();
 
-    cout << "Robot Debug functions: " << endl;
+    std::cout << "Robot Debug functions: " << std::endl;
     robot.setName();
     robot.setNumber();
     robot.debugPlayer();
@@ -23,15 +24,18 @@ void testClasses(void)
 int main(void)
 {
 #ifndef DEBUG
-    Human human;
-    Robot robot;
-    //showScoreBoard;
-    cout << "Press any key to continue...";
-    cin.get();
-    startTheGame(human, robot);
-    runTheGame(human, robot);
-    cout << "Press any key to continue ";
-    cin.get();
+    while(1) {
+        system("clear");
+        ScoreBoard scores;
+        scores.printScores();
+        Human human;
+        Robot robot;
+        
+        std::cout << "Press any key to continue..." << std::endl;
+        std::cin.get();
+        startTheGame(human, robot);
+        runTheGame(human, robot);
+    }
 #else
     testClasses();
 #endif
