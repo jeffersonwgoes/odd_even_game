@@ -1,0 +1,1 @@
+{"wins": {"jeff": 2, "Anna": 2, "Peter": 1, "John": 2}, "diff": [{"jeff": 3}, {"jeff": 3}, {"Anna": 2}, {"Anna": 2}, {"Peter": 2}, {"John": 2}, {"John": 2}]}
