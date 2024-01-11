@@ -1,1 +1,1 @@
-{"wins": {"jeff": 2, "Anna": 2, "Peter": 1, "John": 2}, "diff": [{"jeff": 3}, {"jeff": 3}, {"Anna": 2}, {"Anna": 2}, {"Peter": 2}, {"John": 2}, {"John": 2}]}
+{"wins": {"Jeff": 4, "John": 2, "Ana": 1, "Anna": 1, "Exit()": 1}, "diff": [{"Jeff": 3}, {"John": 3}, {"Jeff": 2}, {"Ana": 2}, {"Jeff": 2}, {"John": 1}, {"Anna": 1}, {"Jeff": 1}, {"Exit()": 1}]}
