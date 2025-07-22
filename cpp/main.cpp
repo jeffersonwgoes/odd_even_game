@@ -1,44 +1,71 @@
 #include <iostream>
-#include <list>
-#include "scoreboard.h"
-#include "player.h"
-#include "game.h"
+#include <fstream>
+#include <string>
+#include <vector>
+/*
 
+File management
+Create a class to manage files, it will keep a copy in the memory and it will be saved when called save()
+Create methods to load a file from the disk
+The file can be accessed line by line (string vector)
+Save the file
+*/
 
-void testClasses(void)
+class FileManagement {
+    public:
+        FileManagement(std::string filePath);
+        void print_file(void);
+        void save(void);
+        void blabla(void);
+    private:
+        std::string path;
+        std::vector<std::string> lines;
+
+};
+
+FileManagement::FileManagement(std::string filePath)
 {
-    Human human;
-    Robot robot;
+    path = filePath;
+    std::ifstream filep(path);
+    std::string line;
+    while (std::getline(filep, line)) {
+        lines.push_back(line);
+    }
+    filep.close();
+}
 
-    std::cout << "Human Debug functions: " << std::endl;
-    human.setName();
-    human.setNumber();
-    human.debugPlayer();
+void FileManagement::print_file(void)
+{
+    for (std::string line : lines) {
+        std::cout << line;
+    }
+}
 
-    std::cout << "Robot Debug functions: " << std::endl;
-    robot.setName();
-    robot.setNumber();
-    robot.debugPlayer();
+void FileManagement::save(void)
+{
+    std::ofstream filep(path);
+    for(std::string line: lines)
+    {
+        filep << line;
+    }
+
+    filep.close();
+}
+
+void FileManagement::blabla(void)
+{
+    // for(int i = 0; i < 5; i++)
+    // {
+    //     lines.push_back("bla");
+        lines.clear();
+    // }
 }
 
 int main(void)
 {
-#ifndef DEBUG
-    while(1) {
-        system("clear");
-        ScoreBoard scores;
-        scores.printScores();
-        Human human;
-        Robot robot;
-        
-        std::cout << "Press any key to continue..." << std::endl;
-        std::cin.get();
-        startTheGame(human, robot);
-        runTheGame(human, robot);
-    }
-#else
-    testClasses();
-#endif
+    FileManagement file("lala.txt");
+    file.print_file();
+    file.blabla();
+    file.save();
     return 0;
 }
-
