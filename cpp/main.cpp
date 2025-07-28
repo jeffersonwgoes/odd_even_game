@@ -61,6 +61,25 @@ void FileManagement::blabla(void)
     // }
 }
 
+class Scoreboard {
+    public :
+        Scoreboard();
+        void add_highscore(int score);
+        bool is_highscore(int score);
+    private :
+        FileManagement *scores; 
+};
+
+Scoreboard::Scoreboard()
+{
+    scores = new FileManagement("scoreboard.txt");
+}
+
+void Scoreboard::add_highscore(int)
+{
+    
+}
+
 int main(void)
 {
     FileManagement file("lala.txt");
