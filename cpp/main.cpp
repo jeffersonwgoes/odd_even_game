@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <sstream>
 /*
 
 File management
@@ -77,11 +78,12 @@ class Scoreboard {
         Scoreboard();
         void add_highscore(int score);
         bool is_highscore(int score);
+        void print_scores(void);
     private:
         std::vector<Score> scores;      
         FileManagement *file_scores;
         Score parse_line(std::string);
-        
+        void print_score(Score s);
 };
 
 Scoreboard::Scoreboard()
@@ -90,6 +92,33 @@ Scoreboard::Scoreboard()
     for(std::string line : file_scores->get_lines()) 
     {
         scores.push_back(parse_line(line));
+    }
+}
+
+Score Scoreboard::parse_line(std::string str)
+{
+    Score ret = {};
+    std::stringstream ss (str);
+    std::string item;
+    getline(ss, item, ',');
+    ret.name = item;
+    getline(ss, item, ',');
+    ret.score = std::stoi(item);
+
+    return ret;
+}
+
+void Scoreboard::print_score(Score s)
+{
+    
+    std::cout << s.name << " " << s.score << std::endl;
+}
+
+void Scoreboard::print_scores(void)
+{
+    for (auto score : scores) 
+    {
+        print_score(score);
     }
 }
 
@@ -105,9 +134,7 @@ Scoreboard::Scoreboard()
 
 int main(void)
 {
-    FileManagement file("lala.txt");
-    file.print_file();
-    file.blabla();
-    file.save();
+    Scoreboard *scr = new Scoreboard();
+    scr->print_scores();
     return 0;
 }
